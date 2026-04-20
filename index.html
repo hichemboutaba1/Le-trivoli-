@@ -5,11 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Au Tivoli – Bar & Restaurant | Strasbourg</title>
   <meta name="description" content="Bar & Restaurant Au Tivoli à Strasbourg. Brasserie conviviale, bières pression, cocktails, cuisine bistro. 71 Rue Boecklin, 67000 Strasbourg." />
-
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="shortcut icon" href="favicon.svg" />
-
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,9 +31,7 @@
         <li><a href="#lebar"     data-i18n="nav.bar">Le Bar</a></li>
         <li><a href="#contact"   data-i18n="nav.contact">Contact</a></li>
       </ul>
-
-      <!-- Language switcher -->
-      <div class="lang-switcher" id="langSwitcher">
+      <div class="lang-switcher">
         <button class="lang-btn active" data-lang="fr">FR</button>
         <span class="lang-sep">|</span>
         <button class="lang-btn" data-lang="de">DE</button>
@@ -67,15 +61,11 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-visual">
-          <div class="about-img-main">
-            <div class="img-placeholder img-facade">
-              <div class="img-label" data-i18n="about.facade">Façade – Restaurant Au Tivoli Bistro</div>
-            </div>
+          <div class="img-placeholder img-facade">
+            <div class="img-label" data-i18n="about.facade">Façade – Restaurant Au Tivoli Bistro</div>
           </div>
-          <div class="about-img-secondary">
-            <div class="img-placeholder img-interior">
-              <div class="img-label" data-i18n="about.interior">Intérieur chaleureux</div>
-            </div>
+          <div class="img-placeholder img-interior">
+            <div class="img-label" data-i18n="about.interior">Intérieur chaleureux</div>
           </div>
         </div>
         <div class="about-text">
@@ -89,21 +79,21 @@
           </p>
           <div class="about-features">
             <div class="feature">
-              <div class="feature-icon">🍺</div>
+              <div class="feature-icon icon-box">🍺</div>
               <div>
                 <strong data-i18n="about.feat1title">Bières pression</strong>
                 <span data-i18n="about.feat1sub">Sélection locale & internationale</span>
               </div>
             </div>
             <div class="feature">
-              <div class="feature-icon">🍸</div>
+              <div class="feature-icon icon-box">🍸</div>
               <div>
                 <strong data-i18n="about.feat2title">Cocktails & Softs</strong>
                 <span data-i18n="about.feat2sub">Bar entièrement équipé</span>
               </div>
             </div>
             <div class="feature">
-              <div class="feature-icon">🏛️</div>
+              <div class="feature-icon icon-box">🏛️</div>
               <div>
                 <strong data-i18n="about.feat3title">Cadre unique</strong>
                 <span data-i18n="about.feat3sub">Pierre, bois & lumière tamisée</span>
@@ -123,7 +113,7 @@
         <h2 class="section-title light" data-i18n="hours.title">Ouvert toute la semaine</h2>
       </div>
       <div class="horaires-grid">
-        <div class="horaires-card">
+        <div class="horaires-card dark-card">
           <div class="horaires-group">
             <div class="horaires-label" data-i18n="hours.weekdays">Lundi – Vendredi</div>
             <div class="horaires-time">07h00 – 20h30</div>
@@ -139,7 +129,7 @@
             <div class="horaires-time">08h00 – 19h00</div>
           </div>
         </div>
-        <div class="status-card" id="statusCard">
+        <div class="status-card dark-card" id="statusCard">
           <div class="status-indicator" id="statusIndicator"></div>
           <div class="status-text"   id="statusText"></div>
           <div class="status-detail" id="statusDetail"></div>
@@ -184,14 +174,14 @@
             <h3 data-i18n="bar.draft">Bières pression</h3>
           </div>
           <ul class="bar-list">
-            <li><span class="beer-dot" style="background:#F9A8D4"></span>Fischer Rosée</li>
-            <li><span class="beer-dot" style="background:#86EFAC"></span>Affligem Douceur Printanière</li>
-            <li><span class="beer-dot" style="background:#FCA5A5"></span>Fischer IPA</li>
-            <li><span class="beer-dot" style="background:#93C5FD"></span>Affligem Blanche</li>
-            <li><span class="beer-dot" style="background:#4ADE80"></span>Heineken</li>
-            <li><span class="beer-dot" style="background:#60A5FA"></span>Fischer Blonde</li>
-            <li><span class="beer-dot" style="background:#1D1D1D"></span>Gallia</li>
-            <li><span class="beer-dot" style="background:#D4A96A"></span>Mutzig</li>
+            <li><span class="beer-dot bd-rose"></span>Fischer Rosée</li>
+            <li><span class="beer-dot bd-spring"></span>Affligem Douceur Printanière</li>
+            <li><span class="beer-dot bd-ipa"></span>Fischer IPA</li>
+            <li><span class="beer-dot bd-blanche"></span>Affligem Blanche</li>
+            <li><span class="beer-dot bd-green"></span>Heineken</li>
+            <li><span class="beer-dot bd-blue"></span>Fischer Blonde</li>
+            <li><span class="beer-dot bd-dark"></span>Gallia</li>
+            <li><span class="beer-dot bd-amber"></span>Mutzig</li>
           </ul>
         </div>
 
@@ -229,8 +219,8 @@
   <section class="section section-galerie" id="galerie">
     <div class="container">
       <div class="section-header">
-        <p class="section-eyebrow" data-i18n="gallery.eyebrow">Ambiance</p>
-        <h2 class="section-title"  data-i18n="gallery.title">Nos espaces</h2>
+        <p class="section-eyebrow light" data-i18n="gallery.eyebrow">Ambiance</p>
+        <h2 class="section-title light"  data-i18n="gallery.title">Nos espaces</h2>
       </div>
       <div class="galerie-grid">
         <div class="galerie-item galerie-large">
@@ -272,21 +262,21 @@
       <div class="contact-grid">
         <div class="contact-info">
           <div class="contact-item">
-            <div class="contact-icon">📍</div>
+            <div class="contact-icon icon-box">📍</div>
             <div>
               <strong data-i18n="contact.address">Adresse</strong>
               <span>71 Rue Boecklin<br />67000 Strasbourg</span>
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">📞</div>
+            <div class="contact-icon icon-box">📞</div>
             <div>
               <strong data-i18n="contact.phone">Téléphone</strong>
               <a href="tel:+33388311749">03 88 31 17 49</a>
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">🕐</div>
+            <div class="contact-icon icon-box">🕐</div>
             <div>
               <strong data-i18n="contact.hours">Horaires</strong>
               <span data-i18n="contact.hoursDetail">Lun–Ven : 07h00–20h30<br />Sam : 08h00–20h00<br />Dim : 08h00–19h00</span>

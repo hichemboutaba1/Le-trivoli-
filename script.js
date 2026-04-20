@@ -208,45 +208,60 @@ const translations = {
   },
 };
 
+// Keys whose values contain HTML — all others use safer textContent
+const HTML_KEYS = new Set(['about.title', 'contact.hoursDetail']);
+
+// ===== CACHED DOM REFS =====
+const navbar          = document.getElementById('navbar');
+const navToggle       = document.getElementById('navToggle');
+const navLinks        = document.getElementById('navLinks');
+const statusIndicator = document.getElementById('statusIndicator');
+const statusText      = document.getElementById('statusText');
+const statusDetail    = document.getElementById('statusDetail');
+const langBtns        = document.querySelectorAll('.lang-btn');
+const navAnchors      = Array.from(document.querySelectorAll('.nav-links a'));
+const sections        = document.querySelectorAll('section[id]');
+const i18nEls         = document.querySelectorAll('[data-i18n]');
+
 // ===== i18n ENGINE =====
-let currentLang = localStorage.getItem('tivoli-lang') || 'fr';
+let currentLang = null;
 
 function applyLang(lang) {
+  if (lang === currentLang) return;
   currentLang = lang;
   localStorage.setItem('tivoli-lang', lang);
-
-  const t = translations[lang];
   document.documentElement.lang = lang;
 
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (t[key] !== undefined) el.innerHTML = t[key];
+  const t = translations[lang];
+  i18nEls.forEach(el => {
+    const val = t[el.dataset.i18n];
+    if (val === undefined) return;
+    if (HTML_KEYS.has(el.dataset.i18n)) {
+      if (el.innerHTML !== val) el.innerHTML = val;
+    } else {
+      if (el.textContent !== val) el.textContent = val;
+    }
   });
 
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.lang === lang);
-  });
-
+  langBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
   updateStatus();
 }
 
-document.querySelectorAll('.lang-btn').forEach(btn => {
-  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
-});
+langBtns.forEach(btn => btn.addEventListener('click', () => applyLang(btn.dataset.lang)));
 
-// ===== NAVBAR SCROLL =====
-const navbar = document.getElementById('navbar');
+// ===== NAVBAR SCROLL (RAF-throttled) =====
+let rafPending = false;
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
-});
+  if (rafPending) return;
+  rafPending = true;
+  requestAnimationFrame(() => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+    rafPending = false;
+  });
+}, { passive: true });
 
 // ===== MOBILE MENU =====
-const navToggle = document.getElementById('navToggle');
-const navLinks  = document.getElementById('navLinks');
-
-navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-});
+navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
 navLinks.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => navLinks.classList.remove('open'));
 });
@@ -259,11 +274,13 @@ revealEls.forEach(el => el.classList.add('reveal'));
 
 const revealObserver = new IntersectionObserver(
   (entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        revealObserver.unobserve(entry.target);
-      }
+    const visible = entries.filter(e => e.isIntersecting);
+    visible.forEach((entry, i) => {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+        entry.target.style.removeProperty('will-change');
+      }, i * 80);
+      revealObserver.unobserve(entry.target);
     });
   },
   { threshold: 0.12 }
@@ -277,9 +294,9 @@ function getStatus() {
   const time = now.getHours() + now.getMinutes() / 60;
 
   let openFrom, openUntil;
-  if (day >= 1 && day <= 5)     { openFrom = 7;  openUntil = 20.5; }
-  else if (day === 6)            { openFrom = 8;  openUntil = 20;   }
-  else                           { openFrom = 8;  openUntil = 19;   }
+  if (day >= 1 && day <= 5)  { openFrom = 7; openUntil = 20.5; }
+  else if (day === 6)         { openFrom = 8; openUntil = 20;   }
+  else                        { openFrom = 8; openUntil = 19;   }
 
   return { isOpen: time >= openFrom && time < openUntil, openFrom, openUntil };
 }
@@ -287,48 +304,55 @@ function getStatus() {
 function fmt(decimal) {
   const h = Math.floor(decimal);
   const m = Math.round((decimal - h) * 60);
-  return `${String(h).padStart(2,'0')}h${m === 0 ? '00' : String(m).padStart(2,'0')}`;
+  return `${String(h).padStart(2, '0')}h${String(m).padStart(2, '0')}`;
 }
 
 function updateStatus() {
-  const indicator = document.getElementById('statusIndicator');
-  const text      = document.getElementById('statusText');
-  const detail    = document.getElementById('statusDetail');
-  if (!indicator) return;
-
+  if (!statusIndicator) return;
   const t = translations[currentLang];
   const { isOpen, openFrom, openUntil } = getStatus();
 
-  if (isOpen) {
-    indicator.className = 'status-indicator open';
-    text.textContent    = t['hours.open'];
-    detail.textContent  = `${t['hours.closes']} ${fmt(openUntil)}`;
-  } else {
-    indicator.className = 'status-indicator closed';
-    text.textContent    = t['hours.closed'];
-    detail.textContent  = `${t['hours.opens']} ${fmt(openFrom)}`;
-  }
+  statusIndicator.classList.remove('open', 'closed');
+  statusIndicator.classList.add(isOpen ? 'open' : 'closed');
+  statusText.textContent   = t[isOpen ? 'hours.open'   : 'hours.closed'];
+  statusDetail.textContent = `${t[isOpen ? 'hours.closes' : 'hours.opens']} ${fmt(isOpen ? openUntil : openFrom)}`;
 }
 
 setInterval(updateStatus, 60_000);
 
-// ===== ACTIVE NAV ON SCROLL =====
-const sections   = document.querySelectorAll('section[id]');
-const navAnchors = document.querySelectorAll('.nav-links a');
+// ===== PAUSE .hh-rays WHEN OFF-SCREEN =====
+const hhRays = document.querySelector('.hh-rays');
+if (hhRays) {
+  new IntersectionObserver(([entry]) => {
+    hhRays.classList.toggle('paused', !entry.isIntersecting);
+  }).observe(document.querySelector('.section-happyhour'));
+}
 
+// ===== ACTIVE NAV ON SCROLL =====
 const sectionObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navAnchors.forEach(a => a.classList.remove('active'));
-        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-        if (active) active.classList.add('active');
-      }
+      if (!entry.isIntersecting) return;
+      navAnchors.forEach(a => a.classList.remove('active'));
+      const anchor = navAnchors.find(a => a.getAttribute('href') === `#${entry.target.id}`);
+      if (anchor) anchor.classList.add('active');
     });
   },
   { rootMargin: '-40% 0px -55% 0px' }
 );
 sections.forEach(s => sectionObserver.observe(s));
 
+// Set initial active nav link based on viewport position
+function initActiveNav() {
+  const visible = Array.from(sections).find(s => {
+    const r = s.getBoundingClientRect();
+    return r.top <= window.innerHeight * 0.6 && r.bottom >= 0;
+  });
+  if (!visible) return;
+  const anchor = navAnchors.find(a => a.getAttribute('href') === `#${visible.id}`);
+  if (anchor) anchor.classList.add('active');
+}
+
 // ===== INIT =====
-applyLang(currentLang);
+applyLang(localStorage.getItem('tivoli-lang') || 'fr');
+initActiveNav();
