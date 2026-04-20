@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Au Tivoli – Bar & Restaurant | Strasbourg</title>
+  <meta name="description" content="Bar & Restaurant Au Tivoli à Strasbourg. Brasserie conviviale, bières pression, cocktails, cuisine bistro. 71 Rue Boecklin, 67000 Strasbourg." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-text">Au Tivoli</span>
+        <span class="logo-sub">Bar & Restaurant</span>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#horaires">Horaires</a></li>
+        <li><a href="#happyhour">Happy Hour</a></li>
+        <li><a href="#lebar">Le Bar</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="accueil">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Brasserie · Bar · Bistro</p>
+      <h1 class="hero-title">Au Tivoli</h1>
+      <p class="hero-subtitle">Un lieu authentique au cœur de Strasbourg</p>
+      <div class="hero-cta">
+        <a href="#lebar" class="btn btn-primary">Découvrir le bar</a>
+        <a href="#contact" class="btn btn-outline">Nous trouver</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section class="section" id="apropos">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-img-main">
+            <div class="img-placeholder img-facade">
+              <div class="img-label">Façade – Restaurant Au Tivoli Bistro</div>
+            </div>
+          </div>
+          <div class="about-img-secondary">
+            <div class="img-placeholder img-interior">
+              <div class="img-label">Intérieur chaleureux</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-text">
+          <p class="section-eyebrow">Notre histoire</p>
+          <h2 class="section-title">Un bistro alsacien<br />hors du commun</h2>
+          <p class="about-desc">
+            Niché au 71 Rue Boecklin à Strasbourg, le Tivoli vous accueille dans un cadre unique alliant pierres de grès rose, poutres en bois apparentes et éclairages chaleureux.
+          </p>
+          <p class="about-desc">
+            Entre bar animé et restaurant convivial, nous vous proposons une carte de bières pression variées, des cocktails maison, et une cuisine bistro généreuse dans une ambiance authentiquement alsacienne.
+          </p>
+          <div class="about-features">
+            <div class="feature">
+              <div class="feature-icon">🍺</div>
+              <div>
+                <strong>Bières pression</strong>
+                <span>Sélection locale & internationale</span>
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">🍸</div>
+              <div>
+                <strong>Cocktails & Softs</strong>
+                <span>Bar entièrement équipé</span>
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">🏛️</div>
+              <div>
+                <strong>Cadre unique</strong>
+                <span>Pierre, bois & lumières</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HORAIRES -->
+  <section class="section section-dark" id="horaires">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow light">Nos horaires</p>
+        <h2 class="section-title light">Ouvert toute la semaine</h2>
+      </div>
+      <div class="horaires-grid">
+        <div class="horaires-card">
+          <div class="horaires-group">
+            <div class="horaires-label">Lundi – Vendredi</div>
+            <div class="horaires-time">07h00 – 20h30</div>
+          </div>
+          <div class="horaires-divider"></div>
+          <div class="horaires-group">
+            <div class="horaires-label">Samedi</div>
+            <div class="horaires-time">08h00 – 20h00</div>
+          </div>
+          <div class="horaires-divider"></div>
+          <div class="horaires-group">
+            <div class="horaires-label">Dimanche</div>
+            <div class="horaires-time">08h00 – 19h00</div>
+          </div>
+        </div>
+        <div class="status-card" id="statusCard">
+          <div class="status-indicator" id="statusIndicator"></div>
+          <div class="status-text" id="statusText"></div>
+          <div class="status-detail" id="statusDetail"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HAPPY HOUR -->
+  <section class="section section-happyhour" id="happyhour">
+    <div class="container">
+      <div class="hh-content">
+        <div class="hh-badge">Happy Hour</div>
+        <h2 class="hh-title">Au Tivoli</h2>
+        <div class="hh-time">16h00 – 19h00</div>
+        <div class="hh-days">Lundi au Vendredi</div>
+        <div class="hh-items">
+          <div class="hh-item">Bières</div>
+          <div class="hh-dot"></div>
+          <div class="hh-item">Cocktails</div>
+          <div class="hh-dot"></div>
+          <div class="hh-item">Softs</div>
+        </div>
+        <p class="hh-mention">L'abus d'alcool est dangereux pour la santé – à consommer avec modération</p>
+      </div>
+      <div class="hh-rays"></div>
+    </div>
+  </section>
+
+  <!-- LE BAR -->
+  <section class="section" id="lebar">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Notre sélection</p>
+        <h2 class="section-title">Le Bar</h2>
+      </div>
+      <div class="bar-grid">
+
+        <!-- Bières pression -->
+        <div class="bar-card">
+          <div class="bar-card-header">
+            <span class="bar-icon">🍺</span>
+            <h3>Bières pression</h3>
+          </div>
+          <ul class="bar-list">
+            <li><span class="beer-dot" style="background:#F9A8D4"></span>Fischer Rosée</li>
+            <li><span class="beer-dot" style="background:#86EFAC"></span>Affligem Douceur Printanière</li>
+            <li><span class="beer-dot" style="background:#FCA5A5"></span>Fischer IPA</li>
+            <li><span class="beer-dot" style="background:#93C5FD"></span>Affligem Blanche</li>
+            <li><span class="beer-dot" style="background:#4ADE80"></span>Heineken</li>
+            <li><span class="beer-dot" style="background:#60A5FA"></span>Fischer Blonde</li>
+            <li><span class="beer-dot" style="background:#1D1D1D"></span>Gallia</li>
+            <li><span class="beer-dot" style="background:#D4A96A"></span>Mutzig</li>
+          </ul>
+        </div>
+
+        <!-- Spiritueux -->
+        <div class="bar-card">
+          <div class="bar-card-header">
+            <span class="bar-icon">🥃</span>
+            <h3>Spiritueux</h3>
+          </div>
+          <ul class="bar-list">
+            <li>Bacardi</li>
+            <li>Malibu</li>
+            <li>Hendrick's Gin</li>
+            <li>Absolut Vodka</li>
+            <li>Get 27</li>
+            <li>Monkey Shoulder</li>
+            <li>Jack Daniel's</li>
+            <li>Pernod & plus encore…</li>
+          </ul>
+        </div>
+
+        <!-- Ambiance bar -->
+        <div class="bar-card bar-card-visual">
+          <div class="bar-interior-visual">
+            <div class="bar-visual-overlay">
+              <span class="bar-visual-icon">🪵</span>
+              <p>Pierre brute · Poutres bois · Lumière ambrée</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section class="section section-galerie" id="galerie">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Ambiance</p>
+        <h2 class="section-title">Nos espaces</h2>
+      </div>
+      <div class="galerie-grid">
+        <div class="galerie-item galerie-large">
+          <div class="galerie-visual gal-facade">
+            <div class="galerie-caption">Façade bistro</div>
+          </div>
+        </div>
+        <div class="galerie-item">
+          <div class="galerie-visual gal-bar">
+            <div class="galerie-caption">Le bar</div>
+          </div>
+        </div>
+        <div class="galerie-item">
+          <div class="galerie-visual gal-plafond">
+            <div class="galerie-caption">Poutres & lumières</div>
+          </div>
+        </div>
+        <div class="galerie-item">
+          <div class="galerie-visual gal-window">
+            <div class="galerie-caption">Fenêtre ancienne</div>
+          </div>
+        </div>
+        <div class="galerie-item">
+          <div class="galerie-visual gal-spirits">
+            <div class="galerie-caption">Cave à spiritueux</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section-dark" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow light">Venir nous voir</p>
+        <h2 class="section-title light">Contact & Accès</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <strong>Adresse</strong>
+              <span>71 Rue Boecklin<br />67000 Strasbourg</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <strong>Téléphone</strong>
+              <a href="tel:+33388311749">03 88 31 17 49</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <strong>Horaires</strong>
+              <span>Lun–Ven : 07h00–20h30<br />Sam : 08h00–20h00<br />Dim : 08h00–19h00</span>
+            </div>
+          </div>
+          <a href="tel:+33388311749" class="btn btn-primary btn-call">
+            Appeler maintenant
+          </a>
+        </div>
+        <div class="contact-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2641.0!2d7.76!3d48.58!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c9c931b7d8d7%3A0xcc21bb794297ae84!2sLe%20Tivoli%20%E2%80%93%20Bar%20%26%20Restaurant!5e0!3m2!1sfr!2sfr!4v1"
+            width="100%"
+            height="380"
+            style="border:0;border-radius:12px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Le Tivoli sur Google Maps">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="logo-text">Au Tivoli</span>
+          <span class="logo-sub">Bar & Restaurant · Strasbourg</span>
+        </div>
+        <p class="footer-mention">L'abus d'alcool est dangereux pour la santé – à consommer avec modération.</p>
+        <p class="footer-copy">© 2025 Au Tivoli – 71 Rue Boecklin, 67000 Strasbourg</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
