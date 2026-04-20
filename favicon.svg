@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#1A1208"/>
+  <rect width="64" height="64" rx="14" fill="url(#grad)" opacity="0.6"/>
+  <defs>
+    <radialGradient id="grad" cx="40%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#F59E2A" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#1A1208" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Beer mug silhouette -->
+  <rect x="16" y="22" width="24" height="28" rx="3" fill="#F59E2A"/>
+  <rect x="40" y="26" width="8" height="14" rx="4" fill="none" stroke="#F59E2A" stroke-width="2.5"/>
+  <!-- Foam -->
+  <ellipse cx="28" cy="22" rx="12" ry="5" fill="#FFF9F0"/>
+  <ellipse cx="22" cy="20" rx="5" ry="4" fill="#FFF9F0"/>
+  <ellipse cx="34" cy="20" rx="5" ry="4" fill="#FFF9F0"/>
+  <!-- T letter overlay -->
+  <text x="32" y="44" font-family="Georgia, serif" font-size="18" font-weight="bold"
+        fill="#1A1208" text-anchor="middle" opacity="0.7">T</text>
+  <!-- Gold border -->
+  <rect x="1.5" y="1.5" width="61" height="61" rx="13" fill="none" stroke="#F59E2A" stroke-width="1.5" opacity="0.4"/>
+</svg>
